@@ -1,0 +1,1 @@
+// SELECT DISTINCT oprname  FROM pg_operator  
