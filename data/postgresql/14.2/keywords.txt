@@ -1,4 +1,4 @@
-Key Word 	PostgreSQL 	SQL:2016 	SQL:2011 	SQL-92
+//Key Word 	PostgreSQL 	SQL:2016 	SQL:2011 	SQL-92
 A 	  	non-reserved 	non-reserved 	 
 ABORT 	non-reserved 	  	  	 
 ABS 	  	reserved 	reserved 	 

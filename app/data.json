@@ -1,0 +1,13 @@
+{
+    "items": [
+        {
+            "name": "ADD",
+            "type": "keyword",
+            "supportedBy": [
+                "postgres_8.0",
+                "mysql_8.0"
+            ]
+        }   
+
+    ]
+}
