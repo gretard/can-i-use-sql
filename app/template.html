@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Can I use SQL</title>
+    <script async defer type="module" src="script.js"></script>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <style>
+        .results:empty:before {
+            content: "No data found, hit search";
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <h1>Can I use SQL</h1>
+        <form id="searchForm">
+            <input type="text" id='search' placeholder="Search text..." />
+            <input type="submit" value="Search" />
+        </form>
+        <h2>Support matrix</h2>
+        <div id="results" class="results">{}</div>
+    </main>
+    
+</body>
+
+</html>
