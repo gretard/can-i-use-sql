@@ -9,8 +9,28 @@
     <script async defer type="module" src="script.js"></script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <style>
-        .results:empty:before {
-            content: "No data found, hit search";
+          table {
+            table-layout: fixed;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tbody tr:hover {
+            background-color: red;
+        }
+        thead {
+            background-color:  #d0dbc2;
+        }
+        .hidden {
+            display: none;
+            ;
         }
     </style>
 

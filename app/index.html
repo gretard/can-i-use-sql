@@ -15,26 +15,20 @@
             border-collapse: collapse;
             width: 100%;
         }
-        
+
         td,
         th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
+
         tbody tr:hover {
             background-color: red;
         }
-        thead  td {
-            background-color:  #d0dbc2;
 
-        }
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-
-        .results:empty:before {
-            content: "No data found, hit search";
+        thead {
+            background-color: #d0dbc2;
         }
 
         .hidden {
@@ -53,7 +47,6 @@
             <input type="submit" value="Search" />
         </form>
         <h2>Support matrix</h2>
-
         <div id="results" class="results">
             <table>
                 <thead>

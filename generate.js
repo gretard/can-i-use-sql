@@ -6,14 +6,15 @@ const dbs = [];
 
 fs.readdirSync(baseDir).forEach(db => {
     const dbDir = `${baseDir}/${db}`;
-    fs.readdirSync(dbDir).forEach(dbVersion=> {
+    fs.readdirSync(dbDir).forEach(dbVersion => {
         dbs.push(`${db}_${dbVersion}`.toLowerCase());
     });
 });
+dbs.sort();
 
 fs.readdirSync(baseDir).forEach(db => {
     const dbDir = `${baseDir}/${db}`;
-    fs.readdirSync(dbDir).forEach(dbVersion=> {
+    fs.readdirSync(dbDir).forEach(dbVersion => {
         console.log(db, dbVersion);
         const dbFiles = `${dbDir}/${dbVersion}`;
         fs.readdirSync(dbFiles).forEach(file => {
@@ -32,7 +33,7 @@ fs.readdirSync(baseDir).forEach(db => {
                 }
 
                 const key = name.toLowerCase();
-                const item = items.find(x=>x.key === key);
+                const item = items.find(x => x.key === key);
                 if (item === undefined) {
                     items.push({
                         name,
@@ -51,43 +52,38 @@ fs.readdirSync(baseDir).forEach(db => {
 
     })
 });
-dbs.sort();
-console.log("final", items.filter(x=>x.supportedBy.length > 1), dbs);
+
 const contents = [];
 contents.push("<table>");
+contents.push("<thead>");
 contents.push("<tr>");
-contents.push(`<td>Name</td>`);
-dbs.forEach(x=> {
-    contents.push(`<td>${x}</td>`);
+contents.push(`<th>Name</th>`);
+dbs.forEach(x => {
+    contents.push(`<th>${x}</th>`);
 });
 contents.push("</tr>");
-
+contents.push("</thead>");
+contents.push("<tbody>");
 items.forEach(item => {
     contents.push("<tr>");
     contents.push(`<td>${item.name}</td>`);
 
-    dbs.forEach(x=> {
+    dbs.forEach(x => {
         const supported = item.supportedBy.find(db => db === x);
         if (supported) {
             contents.push(`<td>Y</td>`);
             return;
-
         }
         contents.push(`<td>N</td>`);
     });
-
-
     contents.push("</tr>");
-
 });
-
-
-
+contents.push("</tbody>");
 contents.push("</table>");
 
-const template =  fs.readFileSync("./app/template.html", 'utf-8');
+const template = fs.readFileSync("./app/template.html", 'utf-8');
 fs.writeFile('app/index.html', template.replace("{}", contents.join('\r\n')), err => {
     if (err) {
-      console.error(err);
+        console.error(err);
     }
-  });
+});
