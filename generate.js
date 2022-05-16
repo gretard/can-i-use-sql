@@ -94,8 +94,8 @@ contents.push("</tr>");
 contents.push("</tfoot>");
 contents.push("</table>");
 
-const template = fs.readFileSync("./app/template.html", 'utf-8');
-fs.writeFile('app/index.html', template.replace("{}", contents.join('\r\n')), err => {
+const template = fs.readFileSync("./docs/template.html", 'utf-8');
+fs.writeFile('docs/index.html', template.replace("{}", contents.join('\r\n')), err => {
     if (err) {
         console.error(err);
     }
