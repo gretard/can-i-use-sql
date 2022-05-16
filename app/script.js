@@ -26,10 +26,33 @@ const searchNodes = () => {
     });
     if (anyFound) {
         tableFooter.classList.add(hiddenNodeClass);
-    }else {
+    } else {
         tableFooter.classList.remove(hiddenNodeClass);
     }
 };
+
+const applyTableFilter = (e) => {
+    tableFooter.classList.add(hiddenNodeClass);
+
+    const type = e.target.value?.toUpperCase();
+    const dataIndex = e.target.getAttribute('data-index');
+    if (type === 'R') {
+        const rows = document.querySelectorAll(`tbody tr`);
+        rows.forEach(row => {
+            row.classList.remove(hiddenNodeClass);
+
+        });
+        return;
+    };
+    const nodes = document.querySelectorAll(`tbody tr td:nth-child(${dataIndex})`);
+    nodes.forEach(node => {
+        const parent = node.parentNode;
+        if (node.innerText !== type) {
+            parent.classList.add('hidden');
+        }
+    });
+
+}
 
 document.getElementById('searchForm').onsubmit = (e) => {
     e.preventDefault();
@@ -37,3 +60,6 @@ document.getElementById('searchForm').onsubmit = (e) => {
 };
 
 document.getElementById('resetBtn').onclick = resetNodes;
+document.querySelectorAll('select').forEach(node => {
+    node.onchange = applyTableFilter;
+});

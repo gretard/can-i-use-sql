@@ -60,8 +60,14 @@ contents.push("<table>");
 contents.push("<thead>");
 contents.push("<tr>");
 contents.push(`<th>Name</th>`);
-dbs.forEach(x => {
-    contents.push(`<th>${x}</th>`);
+dbs.forEach((x, i) => {
+    const select = `<label>${x}<select form='searchForm' data-index=${i+2}>
+    <option value='R'>All</option>
+        <option value='Y'>Y</option>
+        <option value='N'>N</option>
+    
+        </select></label>`;
+    contents.push(`<th>${select}</th>`);
 });
 contents.push("</tr>");
 contents.push("</thead>");
