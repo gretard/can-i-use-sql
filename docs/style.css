@@ -14,12 +14,12 @@ nav {
     background-color: #86a361;
     color: white;
 }
+
 #searchText {
     width: 30vw;
     line-height: 20px;
     padding: 3px;
 }
-
 
 table {
     table-layout: fixed;
@@ -36,6 +36,12 @@ th {
     padding: 8px;
 }
 
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
 tbody tr:hover {
     background-color: #d0dbc2;
 }
@@ -49,6 +55,7 @@ thead {
     display: none;
     transition: all 0.3s ease-in;
 }
+
 .btn {
     text-align: center;
     text-decoration: none;
@@ -63,6 +70,7 @@ thead {
     margin-left: 2px;
     margin-right: 0;
 }
+
 .btn:hover {
     opacity: 0.5;
     cursor: pointer;
