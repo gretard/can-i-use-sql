@@ -1,4 +1,4 @@
-//select 	distinct p.proname from  pg_catalog.pg_proc p  where 	p.prokind = 'f'	order by 1
+//select distinct proname   from  pg_catalog.pg_proc p JOIN   pg_catalog.pg_namespace n ON n.oid = p.pronamespace WHERE  n.nspname not like 'information_schema%' and p.proname not like 'RI_FKey_%' order by  proname  asc
 abbrev
 abs
 aclcontains
@@ -46,6 +46,7 @@ anytextcat
 area
 areajoinsel
 areasel
+array_agg
 array_agg_array_finalfn
 array_agg_array_transfn
 array_agg_finalfn
@@ -95,6 +96,7 @@ atan2
 atan2d
 atand
 atanh
+avg
 bernoulli
 big5_to_euc_tw
 big5_to_mic
@@ -112,12 +114,15 @@ binary_upgrade_set_next_pg_type_oid
 binary_upgrade_set_next_toast_pg_class_oid
 binary_upgrade_set_record_init_privs
 bit
+bit_and
 bit_count
 bit_in
 bit_length
+bit_or
 bit_out
 bit_recv
 bit_send
+bit_xor
 bitand
 bitcat
 bitcmp
@@ -138,7 +143,9 @@ bool
 bool_accum
 bool_accum_inv
 bool_alltrue
+bool_and
 bool_anytrue
+bool_or
 booland_statefunc
 booleq
 boolge
@@ -422,15 +429,20 @@ contsel
 convert
 convert_from
 convert_to
+corr
 cos
 cosd
 cosh
 cot
 cotd
+count
+covar_pop
+covar_samp
 cstring_in
 cstring_out
 cstring_recv
 cstring_send
+cume_dist
 cume_dist_final
 current_database
 current_query
@@ -491,6 +503,7 @@ datetimetz_pl
 dcbrt
 decode
 degrees
+dense_rank
 dense_rank_final
 dexp
 diagonal
@@ -567,12 +580,14 @@ euc_tw_to_mic
 euc_tw_to_utf8
 event_trigger_in
 event_trigger_out
+every
 exp
 extract
 factorial
 family
 fdw_handler_in
 fdw_handler_out
+first_value
 float4
 float48div
 float48eq
@@ -1072,6 +1087,7 @@ isparallel
 isperp
 isvertical
 johab_to_utf8
+json_agg
 json_agg_finalfn
 json_agg_transfn
 json_array_element
@@ -1087,6 +1103,7 @@ json_extract_path
 json_extract_path_text
 json_in
 json_object
+json_object_agg
 json_object_agg_finalfn
 json_object_agg_transfn
 json_object_field
@@ -1102,6 +1119,7 @@ json_to_record
 json_to_recordset
 json_to_tsvector
 json_typeof
+jsonb_agg
 jsonb_agg_finalfn
 jsonb_agg_transfn
 jsonb_array_element
@@ -1135,6 +1153,7 @@ jsonb_le
 jsonb_lt
 jsonb_ne
 jsonb_object
+jsonb_object_agg
 jsonb_object_agg_finalfn
 jsonb_object_agg_transfn
 jsonb_object_field
@@ -1179,8 +1198,10 @@ koi8r_to_utf8
 koi8r_to_win1251
 koi8r_to_win866
 koi8u_to_utf8
+lag
 language_handler_in
 language_handler_out
+last_value
 lastval
 latin1_to_mic
 latin2_to_mic
@@ -1188,6 +1209,7 @@ latin2_to_win1250
 latin3_to_mic
 latin4_to_mic
 lcm
+lead
 left
 length
 like
@@ -1294,6 +1316,7 @@ makeaclitem
 masklen
 matchingjoinsel
 matchingsel
+max
 md5
 mic_to_big5
 mic_to_euc_cn
@@ -1310,8 +1333,10 @@ mic_to_sjis
 mic_to_win1250
 mic_to_win1251
 mic_to_win866
+min
 min_scale
 mod
+mode
 mode_final
 money
 mul_d_interval
@@ -1408,6 +1433,8 @@ normalize
 notlike
 now
 npoints
+nth_value
+ntile
 num_nonnulls
 num_nulls
 numeric
@@ -1531,11 +1558,14 @@ path_recv
 path_send
 path_sub_pt
 pclose
+percent_rank
 percent_rank_final
+percentile_cont
 percentile_cont_float8_final
 percentile_cont_float8_multi_final
 percentile_cont_interval_final
 percentile_cont_interval_multi_final
+percentile_disc
 percentile_disc_final
 percentile_disc_multi_final
 pg_advisory_lock
@@ -1967,6 +1997,7 @@ range_adjacent
 range_adjacent_multirange
 range_after
 range_after_multirange
+range_agg
 range_agg_finalfn
 range_agg_transfn
 range_before
@@ -1987,6 +2018,7 @@ range_gist_union
 range_gt
 range_in
 range_intersect
+range_intersect_agg
 range_intersect_agg_transfn
 range_le
 range_lt
@@ -2005,6 +2037,7 @@ range_send
 range_typanalyze
 range_union
 rangesel
+rank
 rank_final
 raw_array_subscript_handler
 record_eq
@@ -2069,6 +2102,15 @@ regprocin
 regprocout
 regprocrecv
 regprocsend
+regr_avgx
+regr_avgy
+regr_count
+regr_intercept
+regr_r2
+regr_slope
+regr_sxx
+regr_sxy
+regr_syy
 regrolein
 regroleout
 regrolerecv
@@ -2082,6 +2124,7 @@ replace
 reverse
 right
 round
+row_number
 row_security_active
 row_to_json
 rpad
@@ -2157,6 +2200,10 @@ split_part
 sqrt
 starts_with
 statement_timestamp
+stddev
+stddev_pop
+stddev_samp
+string_agg
 string_agg_finalfn
 string_agg_transfn
 string_to_array
@@ -2165,6 +2212,7 @@ strip
 strpos
 substr
 substring
+sum
 suppress_redundant_updates_trigger
 system
 table_am_handler_in
@@ -2481,6 +2529,8 @@ uuid_out
 uuid_recv
 uuid_send
 uuid_sortsupport
+var_pop
+var_samp
 varbit
 varbit_in
 varbit_out
@@ -2504,6 +2554,7 @@ varcharrecv
 varcharsend
 varchartypmodin
 varchartypmodout
+variance
 version
 void_in
 void_out
@@ -2551,6 +2602,7 @@ xml_is_well_formed_document
 xml_out
 xml_recv
 xml_send
+xmlagg
 xmlcomment
 xmlconcat2
 xmlexists

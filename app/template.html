@@ -8,45 +8,23 @@
     <title>Can I use SQL</title>
     <script async defer type="module" src="script.js"></script>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <style>
-          table {
-            table-layout: fixed;
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-        
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        tbody tr:hover {
-            background-color: red;
-        }
-        thead {
-            background-color:  #d0dbc2;
-        }
-        .hidden {
-            display: none;
-            ;
-        }
-    </style>
-
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-    <main>
+    <nav>
         <h1>Can I use SQL</h1>
         <form id="searchForm">
-            <input type="text" id='search' placeholder="Search text..." />
-            <input type="submit" value="Search" />
+            <input type="text" id='searchText' placeholder="Search function, keyword..." />
+            <input type="submit" value="Search" class='btn' />
+            <input type="reset" id="resetBtn" class='btn' value="Reset">
         </form>
-        <h2>Support matrix</h2>
+    </nav>
+    <main>
+        <h2>Database features support matrix</h2>
         <div id="results" class="results">{}</div>
     </main>
-    
+
 </body>
 
 </html>

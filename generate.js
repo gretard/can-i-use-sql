@@ -27,26 +27,28 @@ fs.readdirSync(baseDir).forEach(db => {
                     return;
                 };
                 const supportedDb = `${db}_${dbVersion}`.toLowerCase();
-                const name = line.split(/\t/)[0].replace('(', '').replace(')', '').trim();
-                if (name.length === 0) {
-                    return;
-                }
-
-                const key = name.toLowerCase();
-                const item = items.find(x => x.key === key);
-                if (item === undefined) {
-                    items.push({
-                        name,
-                        key,
-                        "types": [file],
-                        "supportedBy": [
-                            supportedDb
-                        ]
-                    });
-                    return;
-                }
-                item.supportedBy.push(supportedDb);
-                item.types.push(file);
+                const functions = line.split(/\t/)[0].split(',');
+                functions.forEach(fun => {
+                    const name = fun.replace('(', '').replace(')', '').trim();
+                    if (name.length === 0) {
+                        return;
+                    }
+                    const key = name.toLowerCase();
+                    const item = items.find(x => x.key === key);
+                    if (item === undefined) {
+                        items.push({
+                            name,
+                            key,
+                            "types": [file],
+                            "supportedBy": [
+                                supportedDb
+                            ]
+                        });
+                        return;
+                    }
+                    item.supportedBy.push(supportedDb);
+                    item.types.push(file);
+                });
             });
         })
 
@@ -79,6 +81,11 @@ items.forEach(item => {
     contents.push("</tr>");
 });
 contents.push("</tbody>");
+contents.push("<tfoot class='hidden'>");
+contents.push("<tr>");
+contents.push(`<td colspan=${dbs.length + 1}>No results found, please check search</td>`);
+contents.push("</tr>");
+contents.push("</tfoot>");
 contents.push("</table>");
 
 const template = fs.readFileSync("./app/template.html", 'utf-8');
